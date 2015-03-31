@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>Rent</display-name>
+
+   <servlet>
+      <servlet-name>UserLoginS</servlet-name>
+      <servlet-class>servlet.UserLoginS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>UserLoginS</servlet-name>
+      <url-pattern>/UserLoginS</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>UserRegisterS</servlet-name>
+      <servlet-class>servlet.UserRegisterS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>UserRegisterS</servlet-name>
+      <url-pattern>/UserRegisterS</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>UserLogOutS</servlet-name>
+      <servlet-class>servlet.UserLogOutS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>UserLogOutS</servlet-name>
+      <url-pattern>/UserLogOutS</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>ProductS</servlet-name>
+      <servlet-class>servlet.ProductS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>ProductS</servlet-name>
+      <url-pattern>/ProductS</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>CartS</servlet-name>
+      <servlet-class>servlet.CartS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>CartS</servlet-name>
+      <url-pattern>/CartS</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>SearchS</servlet-name>
+      <servlet-class>servlet.SearchS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>SearchS</servlet-name>
+      <url-pattern>/SearchS</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
