@@ -1,1 +1,14 @@
 >>we use Tomcat v7.0
+
+>>I think there some pages we can start to design UI.
+This is a priority order, follow it.
+
+1- hompage.jsp(IMPORTANT DESIGN)
+2- product.jsp(IMPORTANT DESIGN)
+3- shoppingcart.jsp(IMPORTANT DESIGN)
+4- searchwelcom.jsp(same with welcom.html,designing once is ok)
+5- login.jsp
+6- register.jsp
+7- welcom.html
+8- addsuccess.jsp
+9- clearcart.jsp
