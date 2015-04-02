@@ -126,11 +126,13 @@
 							Total Sum:<%=allCost%>
 						</td>
 						<td width="108">
-
 							<a href="CartS?flag=2&&keyword=<%=keyword%>">Clear Shopping Cart</a>
 						</td>
 						<td width="132">
 							<a href="ProductS?flag=0&&keyword=<%=keyword%>">Continue Shopping</a>
+						</td>
+						<td width="132">
+							<a href="orderreview.jsp">Place Order</a>
 						</td>
 					</tr>
 				</table>

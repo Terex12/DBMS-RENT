@@ -56,4 +56,22 @@
       <url-pattern>/SearchS</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+      <servlet-name>OrderS</servlet-name>
+      <servlet-class>servlet.OrderS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>OrderS</servlet-name>
+      <url-pattern>/OrderS</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>Dispatcher</servlet-name>
+      <servlet-class>servlet.Dispatcher</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>Dispatcher</servlet-name>
+      <url-pattern>/Dispatcher</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

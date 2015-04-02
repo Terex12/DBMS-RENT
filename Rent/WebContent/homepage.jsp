@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="dao.ProductDao" import="bean.*" import="util.PageList" import="java.util.*"%> 
+<%@ page import="dao.ProductDao" import="bean.*" import="util.PageList" import="java.util.*"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +26,8 @@
 						<a href="UserLogOutS" class="STYLE1">Log Out</a>					</td>
 					<td width="72" align="right">
 						<a href="shoppingcart.jsp?keyword=<%=keyword%>" class="STYLE1">check Shopping cart</a>					</td>
+					<td width="72" align="right">
+						<a href="OrderS?flag=1" class="STYLE1">View Account</a>					</td>
 					<td width="72" align="right">
 						<a href= "searchwelcom.jsp">back to search</a>				</td>
 						

@@ -19,7 +19,6 @@ public class UserRegisterS extends HttpServlet {
 		String errMsg = "";
 		RequestDispatcher rd;
 		String username = request.getParameter("username");
-		System.out.print("!!!!" + username);
 		String name = request.getParameter("realname");
 		String address = request.getParameter("address");
 		String password = request.getParameter("password");
