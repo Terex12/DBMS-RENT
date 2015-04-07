@@ -19,8 +19,6 @@ public class ProductS extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 
 		switch (Integer.parseInt(request.getParameter("flag"))) {
 			case 0:
@@ -43,11 +41,23 @@ public class ProductS extends HttpServlet {
 					curPage=Integer.parseInt(request.getParameter("start"));
 				}
 				PageList pl = new PageList("product",curPage,rowPerPage);		//if table name change!!
-				
 				String keyword = request.getParameter("keyword");
+				
+				int temp = 0;
+				try{
+					temp = Integer.valueOf(keyword);
+				}catch(Exception e){
+					temp = Integer.MIN_VALUE;
+				}
 
-				request.setAttribute("page", pl);
-				request.setAttribute("findAllGoods", pd.getAllProductByPage(pl.getCurrentCount(),pl.getRowsPerPage(),keyword));
+				if (temp == Integer.MIN_VALUE){
+					request.setAttribute("page", pl);
+					request.setAttribute("findAllGoods", pd.getAllProductByPage(pl.getCurrentCount(),pl.getRowsPerPage(),keyword));
+				}
+				else{
+					request.setAttribute("page", pl);
+					request.setAttribute("findAllGoods", pd.getAllProductByPage1(pl.getCurrentCount(),pl.getRowsPerPage(),temp));
+				}
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/homepage.jsp?keyword=" + keyword);
 				rd.forward(request, response);

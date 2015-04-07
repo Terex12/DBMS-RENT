@@ -74,4 +74,13 @@
       <url-pattern>/Dispatcher</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+      <servlet-name>CategoryS</servlet-name>
+      <servlet-class>servlet.CategoryS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>CategoryS</servlet-name>
+      <url-pattern>/CategoryS</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

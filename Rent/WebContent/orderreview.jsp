@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form action="OrderS?flag=1" method="post">
+<form action="OrderS?flag=0" method="post">
 <table width="600" border="1" cellpadding="1" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#CCCCCC">
 				<tr>
 					<td height="25">

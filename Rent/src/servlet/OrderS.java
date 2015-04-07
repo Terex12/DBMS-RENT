@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.OrderDao;
+import dao.ProductDao;
 import bean.CartInfo;
 import bean.OrderInfo;
 import bean.UserInfo;
@@ -35,13 +36,14 @@ public class OrderS extends HttpServlet {
 		}
 	}
 	
-	private void insertOrder(HttpServletRequest request, HttpServletResponse response) {
+	private void insertOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserInfo u = (UserInfo)request.getSession().getAttribute("userinfo");
 		String username = u.getUserName();
 		int userid = u.getUserId();
 		LinkedList<CartInfo> cart = (LinkedList<CartInfo>) request.getSession().getAttribute("Shoppingcart");
 		
 		OrderDao od = new OrderDao();
+		ProductDao pd = new ProductDao();
 		
 		for (CartInfo c : cart) {
 			OrderInfo oi = new OrderInfo();
@@ -49,8 +51,10 @@ public class OrderS extends HttpServlet {
 			oi.setUserid(userid);
 			oi.setProname(c.getProductName());
 			oi.setQuantity(c.getQuantity());
-			oi.setSum((c.getPrice()*c.getQuantity()));
+			float sum = c.getPrice()*c.getQuantity();
+			oi.setSum(sum);
 			try {
+				pd.changeStock(c.getProductName(),c.getQuantity());
 				od.insertOrder(oi);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -58,11 +62,14 @@ public class OrderS extends HttpServlet {
 			}
 		}
 		
-		//where to go?
+		RequestDispatcher rd = request.getRequestDispatcher("OrderS?flag=1");
+		rd.forward(request, response);
 		
 	}
 	
 	private void viewOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.print("ViewOrder SERVLET");
 		UserInfo u = (UserInfo)request.getSession().getAttribute("userinfo");
 		String uname = u.getUserName();
 		OrderDao od = new OrderDao();

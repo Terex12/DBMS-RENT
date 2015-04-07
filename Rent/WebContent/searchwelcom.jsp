@@ -32,6 +32,21 @@ return;
 <br>
 
 <input type="submit" value= "search" name="submit" />
+
+
+
+<table width="600" border="1" cellpadding="1" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#CCCCCC">			
+<tr>
+	<td bgcolor="#FFFFFF">
+		<a href="CategoryS?catename=<%="fabric"%>">Fabric</a>						
+	</td>
+</tr>						
+					
+					
+</table>
+
+
+
 </form>
 </body>
 </html>

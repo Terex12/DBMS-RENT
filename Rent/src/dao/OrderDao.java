@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.Random;
 
 import bean.OrderInfo;
 import util.DataBaseConnector;
@@ -16,18 +17,19 @@ public class OrderDao{
 		DataBaseConnector dbcon = new DataBaseConnector();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into order (username,userid,proname,quantity,price) values(?,?,?,?,?)";	//modify
+		String sql = "insert into orderinfo (orderid,username,userid,proname,quantity,price) values(?,?,?,?,?,?)";	//modify
 
 		try {
 			con = dbcon.initDB();
 			pstmt = con.prepareStatement(sql);
-		
+			Random random = new Random();
 			//if sql change,here need to change
-			pstmt.setString(1, oi.getUsename());
-			pstmt.setInt(2, oi.getUseid());
-			pstmt.setString(3, oi.getProname());
-			pstmt.setInt(4, oi.getQuantity());
-			pstmt.setFloat(5, oi.getPrice());
+			pstmt.setInt(1, random.nextInt());
+			pstmt.setString(2, oi.getUsename());
+			pstmt.setInt(3, oi.getUseid());
+			pstmt.setString(4, oi.getProname());
+			pstmt.setInt(5, oi.getQuantity());
+			pstmt.setFloat(6, oi.getSum());
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -45,7 +47,7 @@ public class OrderDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		LinkedList<Integer> oidlist = new LinkedList<Integer>();
-		String sql = "select distinct oid from order where uname=?";	//modify
+		String sql = "select distinct orderid from orderinfo where username=?";	//modify
 
 		try {
 			con = dbcon.initDB();
@@ -53,10 +55,10 @@ public class OrderDao{
 		
 			//if sql change,here need to change
 			pstmt.setString(1, uname);
-			pstmt.executeUpdate();
-			
+			rs = pstmt.executeQuery();
+		
 			while (rs.next()) {
-				oidlist.add(rs.getInt("oid"));
+				oidlist.add(rs.getInt("orderid"));
 			}
 			
 		} catch (SQLException e) {
@@ -73,7 +75,7 @@ public class OrderDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		LinkedList<OrderInfo> orderlist = new LinkedList<OrderInfo>();
-		String sql = "select * from order where oid=?";	//modify
+		String sql = "select * from orderinfo where orderid=?";	//modify
 
 		try {
 			con = dbcon.initDB();
@@ -81,7 +83,7 @@ public class OrderDao{
 		
 			//if sql change,here need to change
 			pstmt.setInt(1, oid);
-			pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
 				OrderInfo oinfo = new OrderInfo();
