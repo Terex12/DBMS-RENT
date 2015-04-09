@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.OrderDao;
 import dao.ProductDao;
+import dao.RateDao;
 import bean.CartInfo;
 import bean.OrderInfo;
 import bean.UserInfo;
@@ -62,6 +63,10 @@ public class OrderS extends HttpServlet {
 			}
 		}
 		
+		//after make the order, clear the shopping cart.
+		cart = new LinkedList<CartInfo>();
+		request.getSession().setAttribute("Shoppingcart", cart);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("OrderS?flag=1");
 		rd.forward(request, response);
 		
@@ -69,7 +74,6 @@ public class OrderS extends HttpServlet {
 	
 	private void viewOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.print("ViewOrder SERVLET");
 		UserInfo u = (UserInfo)request.getSession().getAttribute("userinfo");
 		String uname = u.getUserName();
 		OrderDao od = new OrderDao();
@@ -94,7 +98,6 @@ public class OrderS extends HttpServlet {
 		try {
 			order = od.queryOrder(orderid);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -106,11 +109,17 @@ public class OrderS extends HttpServlet {
 	
 	
 	
-
-	private void insertRate(HttpServletRequest request,
-			HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
+	//=============Maybe have bug======================
+	private void insertRate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		LinkedList<OrderInfo> order = (LinkedList<OrderInfo>) request.getAttribute("order");
+		int rate = (int) request.getAttribute("rate");
+		RateDao rdo = new RateDao();
+		for (OrderInfo oi : order){
+			rdo.insertRate(oi, rate);
+		}
+	
+		RequestDispatcher rd = request.getRequestDispatcher("/account.jsp");
+		rd.forward(request, response);
 	}
 
 

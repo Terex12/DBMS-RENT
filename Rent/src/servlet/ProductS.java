@@ -79,7 +79,6 @@ public class ProductS extends HttpServlet {
 
 	}
 
-	//same as post method
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);

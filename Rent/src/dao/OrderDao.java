@@ -17,7 +17,7 @@ public class OrderDao{
 		DataBaseConnector dbcon = new DataBaseConnector();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into orderinfo (orderid,username,userid,proname,quantity,price) values(?,?,?,?,?,?)";	//modify
+		String sql = "insert into ORDERS (orderid,username,userid,proname,quantity,price) values(?,?,?,?,?,?)";	//modify
 
 		try {
 			con = dbcon.initDB();
@@ -33,7 +33,6 @@ public class OrderDao{
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			//System.out.println("Insert Erro!");
 			e.printStackTrace();
 			return false;
 		} 
@@ -62,7 +61,6 @@ public class OrderDao{
 			}
 			
 		} catch (SQLException e) {
-			//System.out.println("Insert Erro!");
 			e.printStackTrace();
 		} 
 		dbcon.closeDB(con);
@@ -84,7 +82,6 @@ public class OrderDao{
 			//if sql change,here need to change
 			pstmt.setInt(1, oid);
 			rs = pstmt.executeQuery();
-			
 			while (rs.next()) {
 				OrderInfo oinfo = new OrderInfo();
 				oinfo.setProname(rs.getString("proname"));
@@ -94,7 +91,6 @@ public class OrderDao{
 			}
 			
 		} catch (SQLException e) {
-			//System.out.println("Insert Erro!");
 			e.printStackTrace();
 		} 
 		dbcon.closeDB(con);

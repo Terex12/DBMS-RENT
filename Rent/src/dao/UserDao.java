@@ -16,7 +16,7 @@ public class UserDao{
 		DataBaseConnector dbcon = new DataBaseConnector();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into userinfo (username,name,address,password,email) values(?,?,?,?,?)";	//modify
+		String sql = "insert into CUSTOMERS (USERNAME,NAME,ADDRESS1,PASSWORD,EMAIL) values(?,?,?,?,?)";	//modify
 
 		try {
 			con = dbcon.initDB();
@@ -44,7 +44,7 @@ public class UserDao{
 		DataBaseConnector dbcon = new DataBaseConnector();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "select * from userinfo where username = ?";	//modify
+		String sql = "select * from CUSTOMERS where USERNAME = ?";	//modify
 		ResultSet rs = null;
 		try {
 			con = dbcon.initDB();
@@ -53,30 +53,28 @@ public class UserDao{
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				UserInfo u = new UserInfo();
-				u.setUserId(rs.getInt("userid"));
-				u.setUserName(rs.getString("username"));
-				u.setName(rs.getString("name"));
-				u.setPassword(rs.getString("password"));
-				u.setEmail(rs.getString("email"));
-				u.setAddress(rs.getString("address"));
+				u.setUserId(rs.getInt("CUSTOMERID"));
+				u.setUserName(rs.getString("USERNAME"));
+				u.setName(rs.getString("NAME"));
+				u.setPassword(rs.getString("PASSWORD"));
+				u.setEmail(rs.getString("EMAIL"));
+				u.setAddress(rs.getString("ADDRESS1"));
 				l.add(u);
 
 			}
 			
 		}catch (SQLException e) {
-			System.out.println("Erro!");
 			e.printStackTrace();
 		} 
 		return l;
 	}
 
-	
 
 	public int checkExists(String username) {
 		DataBaseConnector dbcon = new DataBaseConnector();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "select * from userinfo where username =?";
+		String sql = "select * from CUSTOMERS where USERNAME =?";
 		ResultSet rs = null;
 		int flag = 0;
 		try {
@@ -90,13 +88,11 @@ public class UserDao{
 			} else
 				flag = 0;	//non
 		} catch (SQLException e) {
-			System.out.println("Erro!");
 			e.printStackTrace();
 		} 
 		try {
 			dbcon.closeDB(con);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

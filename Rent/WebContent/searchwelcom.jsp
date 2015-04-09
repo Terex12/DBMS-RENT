@@ -34,7 +34,7 @@ return;
 <input type="submit" value= "search" name="submit" />
 
 
-
+<!-- 静态的加入分类名称 -->
 <table width="600" border="1" cellpadding="1" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#CCCCCC">			
 <tr>
 	<td bgcolor="#FFFFFF">

@@ -9,8 +9,8 @@ public class DataBaseConnector{
 	public Connection initDB(){
 		String dbdriver = "oracle.jdbc.driver.OracleDriver";
 		String dburl = "jdbc:oracle:thin:@oracle.cise.ufl.edu:1521:orcl";
-		String dbusername = "xux";
-		String dbpassword = "Axu11235813";
+		String dbusername = "zheliu";
+		String dbpassword = "welcome1";
 		Connection con = null;
 		
 		try {
