@@ -5,6 +5,7 @@ public class OrderInfo{
 	private String username;
 	private int userid;
 	private String proname;
+	private int proid;
 	private int quantity;
 	private float price;
 	private float sum;
@@ -39,6 +40,13 @@ public class OrderInfo{
 		return this.proname;
 	}
 	
+	public void setProid(int proid){
+		this.proid = proid;
+	}
+	public int getProid(){
+		return this.proid;
+	}
+	
 	public void setQuantity(int quantity){
 		this.quantity = quantity;
 	}
@@ -66,5 +74,7 @@ public class OrderInfo{
 	public int getRate(){
 		return this.rate;
 	}
+	
+	
 	
 }

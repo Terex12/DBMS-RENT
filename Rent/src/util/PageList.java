@@ -19,12 +19,12 @@ public class PageList {
 	private ResultSet rs = null;
 	
 
-	public PageList(String tableName, int currentPage, int rowsPerPage) {
+	public PageList(String tableName, int currentPage, int rowsPerPage,String keyword) {
 		con = dbcon.initDB();		
 		this.currentPage = currentPage;
 		this.rowsPerPage = rowsPerPage;
 		setCurrentCount();
-		setMaxRowCount(tableName);
+		setMaxRowCount(tableName,keyword);
 		setMaxPage();
 	}
 
@@ -41,7 +41,7 @@ public class PageList {
 	}
 
 	public void setMaxPage() {
-		if (maxRowCount % rowsPerPage == 0&&maxRowCount!=0) {
+		if (maxRowCount % rowsPerPage == 0 && maxRowCount!=0) {
 			maxPage = maxRowCount / rowsPerPage;
 		} else {
 			maxPage = maxRowCount / rowsPerPage + 1;
@@ -68,13 +68,17 @@ public class PageList {
 		return maxRowCount;
 	}
 
-	public void setMaxRowCount(String tableName) {
-		String findAllSql = "select count(*) as count from " + tableName;
+	public void setMaxRowCount(String tableName, String keyword) {
+		String findAllSql = "select count(*) as count from " + tableName +" where TITLE like \'%"+ keyword + "%\'";
+		
+		System.out.println("PageList71--" + findAllSql);
+		
 		try {
 			pstmt = con.prepareStatement(findAllSql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				maxRowCount = rs.getInt("count");
+				System.out.println("PageList78--" + maxRowCount);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
