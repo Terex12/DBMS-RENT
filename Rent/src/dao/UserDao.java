@@ -16,7 +16,7 @@ public class UserDao{
 		DataBaseConnector dbcon = new DataBaseConnector();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into CUSTOMERS (USERNAME,NAME,ADDRESS1,PASSWORD,EMAIL) values(?,?,?,?,?)";	//modify
+		String sql = "insert into CUSTOMERS (USERNAME,FIRSTNAME,ADDRESS1,PASSWORD,EMAIL) values(?,?,?,?,?)";	//modify(name)
 
 		try {
 			con = dbcon.initDB();
@@ -54,8 +54,8 @@ public class UserDao{
 			while (rs.next()) {
 				UserInfo u = new UserInfo();
 				u.setUserId(rs.getInt("CUSTOMERID"));
-				u.setUserName(rs.getString("USERNAME"));
-				u.setName(rs.getString("NAME"));
+				u.setUserName(rs.getString("USERNAME"));	
+				u.setName(rs.getString("FIRSTNAME"));	//name
 				u.setPassword(rs.getString("PASSWORD"));
 				u.setEmail(rs.getString("EMAIL"));
 				u.setAddress(rs.getString("ADDRESS1"));

@@ -51,11 +51,13 @@ public class OrderS extends HttpServlet {
 			oi.setUsername(username);
 			oi.setUserid(userid);
 			oi.setProname(c.getProductName());
+			oi.setProid(c.getId());
 			oi.setQuantity(c.getQuantity());
+			
 			float sum = c.getPrice()*c.getQuantity();
 			oi.setSum(sum);
 			try {
-				pd.changeStock(c.getProductName(),c.getQuantity());
+				pd.changeStock(c.getProductName(), c.getId(), c.getQuantity());
 				od.insertOrder(oi);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -64,8 +66,8 @@ public class OrderS extends HttpServlet {
 		}
 		
 		//after make the order, clear the shopping cart.
-		cart = new LinkedList<CartInfo>();
-		request.getSession().setAttribute("Shoppingcart", cart);
+		//cart = new LinkedList<CartInfo>();
+		//request.getSession().setAttribute("Shoppingcart", cart);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("OrderS?flag=1");
 		rd.forward(request, response);

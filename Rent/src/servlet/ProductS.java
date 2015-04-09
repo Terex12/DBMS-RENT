@@ -34,14 +34,19 @@ public class ProductS extends HttpServlet {
 			
 			try {
 				Integer curPage = 0;
-				Integer rowPerPage = 10;
+				Integer rowPerPage = 100;
 				if (request.getParameter("start") == null) {
 					curPage=1;
 				} else {
 					curPage=Integer.parseInt(request.getParameter("start"));
 				}
-				PageList pl = new PageList("product",curPage,rowPerPage);		//if table name change!!
-				String keyword = request.getParameter("keyword");
+				
+				System.out.println("ProductS44-- current page=" + curPage);
+				
+				
+				String keyword = (String) request.getSession().getAttribute("keyword");
+				PageList pl = new PageList("PRODUCTS",curPage,rowPerPage,keyword);		//if table name change!!
+			
 				
 				int temp = 0;
 				try{
@@ -49,9 +54,10 @@ public class ProductS extends HttpServlet {
 				}catch(Exception e){
 					temp = Integer.MIN_VALUE;
 				}
-
 				if (temp == Integer.MIN_VALUE){
 					request.setAttribute("page", pl);
+					System.out.println("ProductS55-- current page=" + pl.getCurrentCount() + "row per page" +pl.getRowsPerPage());
+					
 					request.setAttribute("findAllGoods", pd.getAllProductByPage(pl.getCurrentCount(),pl.getRowsPerPage(),keyword));
 				}
 				else{
@@ -59,6 +65,7 @@ public class ProductS extends HttpServlet {
 					request.setAttribute("findAllGoods", pd.getAllProductByPage1(pl.getCurrentCount(),pl.getRowsPerPage(),temp));
 				}
 				
+				//need change??
 				RequestDispatcher rd = request.getRequestDispatcher("/homepage.jsp?keyword=" + keyword);
 				rd.forward(request, response);
 				

@@ -33,8 +33,8 @@ public class ProductDao{
             	product.setPrice(rs.getFloat("PRICE"));
             	product.setProName(rs.getString("TITLE"));
             	product.setStock(rs.getInt("QUAN_IN_STOCK"));
-            	product.setRate(rs.getInt("rate"));
-            	product.setPic(rs.getString("pic"));
+            	product.setRate(rs.getInt("RATE"));
+            	product.setPic(rs.getString("PIC"));
             	list.add(product);
 
             }  
@@ -53,10 +53,17 @@ public class ProductDao{
     
 	
 	//get specific page products
-    public LinkedList<ProductInfo> getAllProductByPage(int  start, int rowPerPage, String keyword){  
-    	  LinkedList<ProductInfo> list = new LinkedList<ProductInfo>();  
-    	  String sql =  "select * from (select * from PRODUCTS as p, INVENTORY as i where p.PROD_ID = i.PROD_ID and p.TITLE like \'%" + keyword + "%\')" + "where rownum>=" + (start*rowPerPage) + "and rownum<=" + ((start*rowPerPage)+rowPerPage);
-
+    public LinkedList<ProductInfo> getAllProductByPage(int start, int rowPerPage, String keyword){  
+    	  LinkedList<ProductInfo> list = new LinkedList<ProductInfo>(); 
+    	  
+    	  String sql = "select * from (select * from (select p.*, rownum r from PRODUCTS p where p.TITLE like \'%"+ keyword + "%\')" + "where r>=" + start + "and r<=" + (start+rowPerPage) + ") pr, INVENTORY i where pr.PROD_ID = i.PROD_ID";
+    	  
+    	  
+    	  //String sql =  "select * from (select *, rownum r from PRODUCTS p, INVENTORY i where p.PROD_ID = i.PROD_ID and p.TITLE like \'%" + keyword + "%\')" + "where r>=" + (start*rowPerPage) + "and r<=" + ((start*rowPerPage)+rowPerPage);
+    	  
+    	  System.out.println("ProductDao60--"+ sql);
+    	  
+    	  
            try {  
         	   	con = dbcon.initDB();
    				pstmt = con.prepareStatement(sql);
@@ -69,8 +76,8 @@ public class ProductDao{
    	            	product.setPrice(rs.getFloat("PRICE"));
    	            	product.setProName(rs.getString("TITLE"));
    	            	product.setStock(rs.getInt("QUAN_IN_STOCK"));
-   	            	product.setRate(rs.getInt("rate"));
-   	            	product.setPic(rs.getString("pic"));
+   	            	product.setRate(rs.getInt("RATE"));
+   	            	product.setPic(rs.getString("PIC"));
               		list.add(product);
               }  
         } catch (SQLException e) {  
@@ -101,8 +108,8 @@ public class ProductDao{
    	            	product.setPrice(rs.getFloat("PRICE"));
    	            	product.setProName(rs.getString("TITLE"));
    	            	product.setStock(rs.getInt("QUAN_IN_STOCK"));
-   	            	product.setRate(rs.getInt("rate"));
-   	            	product.setPic(rs.getString("pic"));
+   	            	product.setRate(rs.getInt("RATE"));
+   	            	product.setPic(rs.getString("PIC"));
               		list.add(product);
             }  
       } catch (SQLException e) {  
@@ -142,13 +149,13 @@ public class ProductDao{
    }
     
    
-   public boolean changeStock(String proname, int quantity) throws Exception{
+   public boolean changeStock(String proname, int proid, int quantity) throws Exception{
 	   	DataBaseConnector dbcon = new DataBaseConnector();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "update INVENTORY set QUAN_IN_STOCK=? where PROD_ID=(select i.PROD_ID from PRODUCTS p, INVENTORY i where p.PROD_ID = i.PROD_ID and p.TITLE=?)";	//modify
 		
-		int requantity = findQuantity(proname) - quantity;
+		int requantity = findQuantity(proid) - quantity;
 		try {
 			con = dbcon.initDB();
 			pstmt = con.prepareStatement(sql);
@@ -172,7 +179,7 @@ public class ProductDao{
     public ProductInfo findById(int proid) throws Exception {
 		ProductInfo product = new ProductInfo();
 	  	con = dbcon.initDB();
-		String sql = "select * from PRODUCTS where PROD_ID=?";
+		String sql = "select * from PRODUCTS p, INVENTORY i where p.PROD_ID = i.PROD_ID and p.PROD_ID=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, proid);
 		ResultSet rs = ps.executeQuery();
@@ -183,8 +190,8 @@ public class ProductDao{
            	product.setPrice(rs.getFloat("PRICE"));
            	product.setProName(rs.getString("TITLE"));
            	product.setStock(rs.getInt("QUAN_IN_STOCK"));
-           	product.setRate(rs.getInt("rate"));
-           	product.setPic(rs.getString("pic"));
+           	product.setRate(rs.getInt("RATE"));
+           	product.setPic(rs.getString("PIC"));
 		}
 		
 		dbcon.closeDB(con);
@@ -204,24 +211,23 @@ public class ProductDao{
            	product.setPrice(rs.getFloat("PRICE"));
            	product.setProName(rs.getString("TITLE"));
            	product.setStock(rs.getInt("QUAN_IN_STOCK"));
-           	product.setRate(rs.getInt("rate"));
-           	product.setPic(rs.getString("pic"));
+           	product.setRate(rs.getInt("RATE"));
+           	product.setPic(rs.getString("PIC"));
 		}
 		
 		dbcon.closeDB(con);
-		
 		return product;
 	}
 
-    public int findQuantity(String proname) throws Exception {
-		String sql = "select * from PRODUCTS where TITLE=?";
+    public int findQuantity(int proid) throws Exception {
+		String sql = "select * from INVENTORY where PROD_ID=?";
 		int stock = 0;
 		con = dbcon.initDB();
 		pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, proname);
+		pstmt.setInt(1, proid);
 		rs = pstmt.executeQuery(); 
 		while (rs.next()) {
-			stock= rs.getInt("stock");
+			stock= rs.getInt("QUAN_IN_STOCK");
 		}
 		dbcon.closeDB(con);
 		return stock;	

@@ -22,8 +22,9 @@ public class SearchS extends HttpServlet {
 
 		RequestDispatcher rd;
 		String keyword = request.getParameter("search");
+		keyword = keyword.toUpperCase();
 		request.getSession().setAttribute("keyword", keyword);
-		rd = request.getRequestDispatcher("ProductS?flag=0&&keyword=" + keyword);
+		rd = request.getRequestDispatcher("ProductS?flag=0");
 		rd.forward(request, response);
 	}
 

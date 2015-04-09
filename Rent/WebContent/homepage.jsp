@@ -67,7 +67,7 @@
 		<div id="pageList">
 			<div align="center">
 				<ul>
-					<span><a href="ProductS?flag=0&start=1">Previous Page</a>
+					<span><a href="ProductS?flag=0&start=1">First Page</a>
 						<%
 							for (int i = 1; i <= pl.getMaxPage(); i++) {
 								if (pl.getCurrentPage() == i) {
