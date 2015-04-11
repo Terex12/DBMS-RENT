@@ -12,7 +12,7 @@
   	</div>
 
  	<div>
-    	<div align="center"><a href="shoppingcart.jsp">checkcart</a></div>
+    	<div align="center"><a href="shoppingcart.jsp">Check Cart</a></div>
 	</div>
 </body>
 </html>

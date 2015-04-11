@@ -35,7 +35,7 @@ public class UserLoginS extends HttpServlet {
 				request.getSession().setAttribute("userinfo", lu.get(0));
 				LinkedList<CartInfo> cart = new LinkedList<CartInfo>();
 				request.getSession().setAttribute("Shoppingcart", cart);
-				rd = request.getRequestDispatcher("/searchwelcom.jsp");
+				rd = request.getRequestDispatcher("/search.jsp");
 				//rd = request.getRequestDispatcher("ProductS?flag=0");
 				rd.forward(request, response);
 			}

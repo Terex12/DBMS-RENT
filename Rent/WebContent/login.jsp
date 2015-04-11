@@ -53,41 +53,6 @@
 <div class="logo_img"><a href="index.html"><img src="images/Florida_Gators_script_logo.png" alt="Site Name" width="200" height="60"></a></div></div>
 
 <div id="menu">
-<ul>  
-<li><a href="categories.html">Latest</a>
-<!--  <div>        
-<ul>	
-<li><a href="default.htm">PC (0)</a></li>
-<li><a href="default.htm">Mac (1)</a></li>
-</ul>
-</div>  -->
-</li>
-<li><a href="categories.html">Most Popular</a>   	
-<!--  <div>
-<ul>	
-<li><a href="default.htm">Macs (0)</a></li>
-<li><a href="default.htm">Windows (0)</a></li>
-</ul>
-</div>  -->
-</li>
-<li><a href="categories.html">Category</a>
-  <ul>
-    <li></li>
-  </ul>
-<!--  <div>
-  <ul>	
-  <li><a href="default.htm">Mice and Trackballs (0)</a></li>
-  <li><a href="default.htm">Monitors (2)</a></li>
-  <li><a href="default.htm">Printers (0)</a></li>
-  <li><a href="default.htm">Scanners (0)</a></li>
-  <li><a href="default.htm">Web Cameras (0)</a></li>
-  </ul>
-</div>   -->
-</li>
-<li><a href="categories.html">Blueray</a></li>
-<li><a href="categories.html">Old-fashioned</a></li>
-<li><a href="categories.html">Outlets</a></li>
-</ul>
 </div>
 
 
@@ -144,7 +109,7 @@
           <input type="password" id="password" value="" name="password" />
           <br />
           <br />
-          <a class = "button"><input type="Submit" name="submit" style="width: 50px" value="Login" /></a>
+          <a class = "button"><input type="Submit" name="submit" value="Login" /></a>
 		  <input type="Reset" name="reset" style="width: 50px" value="Reset" />
                   </div>
       </form>

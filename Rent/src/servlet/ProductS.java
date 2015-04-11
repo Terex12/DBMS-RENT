@@ -66,7 +66,7 @@ public class ProductS extends HttpServlet {
 				}
 				
 				//need change??
-				RequestDispatcher rd = request.getRequestDispatcher("/homepage.jsp?keyword=" + keyword);
+				RequestDispatcher rd = request.getRequestDispatcher("/mainpage.jsp?keyword=" + keyword);
 				rd.forward(request, response);
 				
 			} catch (Exception e) {
@@ -78,7 +78,7 @@ public class ProductS extends HttpServlet {
 			Integer id = Integer.parseInt(request.getParameter("proid"));
 			try {
 				request.setAttribute("product", pd.findById(id));
-				RequestDispatcher rd = request.getRequestDispatcher("/product.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/item.jsp");
 				rd.forward(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
