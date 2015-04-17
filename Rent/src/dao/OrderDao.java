@@ -26,8 +26,6 @@ public class OrderDao{
 			pstmt = con.prepareStatement("{call INSERT_ORDERLINE(?,?,?)}");
 			pstmt.setInt(1, orderid);	//username
 			pstmt.setInt(2, oi.getProid());
-			
-			//add
 			pstmt.setInt(3, oi.getQuantity());
 		
 			pstmt.executeUpdate();
@@ -120,6 +118,13 @@ public class OrderDao{
 		return oidlist;
 	}
 	
+	
+	
+	
+	
+	
+	
+	//------------------------------------------------------------------------
 	public LinkedList<OrderInfo> queryOrder(int oid) throws Exception{
 		DataBaseConnector dbcon = new DataBaseConnector();
 		Connection con = null;
