@@ -82,7 +82,7 @@
 				<br /> 
 				<input type="Submit" name="submit" style="width: 210px" value="Register" />
 			 	<input type="Reset" name="reset" style="width: 210px" value="Reset" />
-				<input type="button" name="gotologin" style="width: 210px" value="login" onclick="window.location='login1.jsp'"/>
+				<input type="button" name="gotologin" style="width: 210px" value="login" onclick="window.location='login.jsp'"/>
 		</div>
 	</form>
 </body>
