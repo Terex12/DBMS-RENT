@@ -42,9 +42,17 @@ public class OrderS extends HttpServlet {
 		String username = u.getUserName();
 		int userid = u.getUserId();
 		LinkedList<CartInfo> cart = (LinkedList<CartInfo>) request.getSession().getAttribute("Shoppingcart");
-		
+		float totalsum = 0;
 		OrderDao od = new OrderDao();
 		ProductDao pd = new ProductDao();
+		
+		int orderid = 0;
+		try {
+			orderid = od.insertOrder(u.getUserName());
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		for (CartInfo c : cart) {
 			OrderInfo oi = new OrderInfo();
@@ -55,14 +63,22 @@ public class OrderS extends HttpServlet {
 			oi.setQuantity(c.getQuantity());
 			
 			float sum = c.getPrice()*c.getQuantity();
+			totalsum = totalsum + sum;
 			oi.setSum(sum);
 			try {
 				pd.changeStock(c.getProductName(), c.getId(), c.getQuantity());
-				od.insertOrder(oi);
+				od.insertOrderLine(orderid, oi);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		
+		try {
+			od.updateOrder(orderid, totalsum);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		//after make the order, clear the shopping cart.
@@ -77,10 +93,12 @@ public class OrderS extends HttpServlet {
 	private void viewOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		UserInfo u = (UserInfo)request.getSession().getAttribute("userinfo");
-		String uname = u.getUserName();
+		int userid = u.getUserId();
 		OrderDao od = new OrderDao();
 		try {
-			LinkedList<Integer> oidlist = od.queryOrderid(uname);
+			//problem
+			LinkedList<Integer> oidlist = od.queryOrderid(userid);
+			
 			if (oidlist.size() > 0){
 				request.setAttribute("orderinfo", oidlist);
 			}
@@ -117,7 +135,11 @@ public class OrderS extends HttpServlet {
 		int rate = (int) request.getAttribute("rate");
 		RateDao rdo = new RateDao();
 		for (OrderInfo oi : order){
-			rdo.insertRate(oi, rate);
+			try {
+				rdo.insertRate(oi, rate);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	
 		RequestDispatcher rd = request.getRequestDispatcher("/account.jsp");
