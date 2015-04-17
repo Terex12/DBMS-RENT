@@ -95,8 +95,9 @@ public class ProductDao{
     
     public LinkedList<ProductInfo> getAllProductByPage1(int  start, int rowPerPage, int temp){  
   	  LinkedList<ProductInfo> list = new LinkedList<ProductInfo>();  
-  	  String sql =  "select * from (select * from PRODUCTS where CATEGORY=" + temp+ ")" + "where rownum>=" + (start*rowPerPage) + "and rownum<=" + ((start*rowPerPage)+rowPerPage);
-         try {  
+	  String sql = "select * from (select * from (select p.*, rownum r from PRODUCTS p where p.CATEGORY="+ temp + ")" + "where r>=" + start + "and r<=" + (start+rowPerPage) + ") pr, INVENTORY i where pr.PROD_ID = i.PROD_ID";
+	  System.out.println("ProductDao99--"+ sql);   
+	  try {  
       	   		con = dbcon.initDB();
  				pstmt = con.prepareStatement(sql);
  				rs = pstmt.executeQuery();  
@@ -122,6 +123,46 @@ public class ProductDao{
 		}
       return list;  
   } 
+    
+    
+    
+    
+    public LinkedList<ProductInfo> getAllProductByPage2(int start, int rowPerPage, String keyword){  
+  	  LinkedList<ProductInfo> list = new LinkedList<ProductInfo>(); 
+  	  keyword = String.valueOf(keyword.charAt(keyword.length()-1));
+  	  String sql = "select * from (select * from (select p.*, rownum r from PRODUCTS p where p.Rate >="+ keyword + ")" + "where r>=" + start + "and r<=" + (start+rowPerPage) + ") pr, INVENTORY i where pr.PROD_ID = i.PROD_ID";
+  	  
+  	  System.out.println("ProductDao134--"+ sql);
+  	  
+  	  
+         try {  
+      	   	con = dbcon.initDB();
+ 				pstmt = con.prepareStatement(sql);
+ 				rs = pstmt.executeQuery();  
+ 				while(rs.next()){  
+ 					ProductInfo product = new ProductInfo();
+ 					//will modify
+ 					product.setProId(rs.getInt("PROD_ID"));
+ 	            	product.setCateId(rs.getInt("CATEGORY"));
+ 	            	product.setPrice(rs.getFloat("PRICE"));
+ 	            	product.setProName(rs.getString("TITLE"));
+ 	            	product.setStock(rs.getInt("QUAN_IN_STOCK"));
+ 	            	product.setRate(rs.getInt("RATE"));
+ 	            	product.setPic(rs.getString("PIC"));
+            		list.add(product);
+            }  
+      } catch (SQLException e) {  
+          e.printStackTrace();  
+      }  
+         
+      try {
+			dbcon.closeDB(con);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+      return list;  
+  } 
+  
     
    public int findCateId(String cate){
 	   //change 

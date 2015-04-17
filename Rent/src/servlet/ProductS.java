@@ -45,7 +45,6 @@ public class ProductS extends HttpServlet {
 				
 				
 				String keyword = (String) request.getSession().getAttribute("keyword");
-				PageList pl = new PageList("PRODUCTS",curPage,rowPerPage,keyword);		//if table name change!!
 			
 				
 				int temp = 0;
@@ -55,17 +54,25 @@ public class ProductS extends HttpServlet {
 					temp = Integer.MIN_VALUE;
 				}
 				if (temp == Integer.MIN_VALUE){
-					request.setAttribute("page", pl);
-					System.out.println("ProductS55-- current page=" + pl.getCurrentCount() + "row per page" +pl.getRowsPerPage());
-					
-					request.setAttribute("findAllGoods", pd.getAllProductByPage(pl.getCurrentCount(),pl.getRowsPerPage(),keyword));
+					if (!keyword.substring(0, 4).equals("star")){	//search bar
+						PageList pl = new PageList("PRODUCTS",curPage,rowPerPage,keyword);		//if table name change!!
+						request.setAttribute("page", pl);
+						System.out.println("ProductS60-- current page=" + pl.getCurrentCount() + "row per page" +pl.getRowsPerPage());
+						request.setAttribute("findAllGoods", pd.getAllProductByPage(pl.getCurrentCount(),pl.getRowsPerPage(),keyword));
+					}
+					else{	//search rate star
+						PageList pl = new PageList("PRODUCTS",curPage,rowPerPage,keyword);		//if table name change!!
+						request.setAttribute("page", pl);
+						System.out.println("ProductS65-- current page=" + pl.getCurrentCount() + "row per page" +pl.getRowsPerPage());
+						request.setAttribute("findAllGoods", pd.getAllProductByPage2(pl.getCurrentCount(),pl.getRowsPerPage(),keyword));
+					}
 				}
-				else{
+				else{	//category
+					PageList pl = new PageList("PRODUCTS",curPage,rowPerPage,String.valueOf(temp));		//if table name change!!
 					request.setAttribute("page", pl);
 					request.setAttribute("findAllGoods", pd.getAllProductByPage1(pl.getCurrentCount(),pl.getRowsPerPage(),temp));
 				}
 				
-				//need change??
 				RequestDispatcher rd = request.getRequestDispatcher("/mainpage.jsp?keyword=" + keyword);
 				rd.forward(request, response);
 				

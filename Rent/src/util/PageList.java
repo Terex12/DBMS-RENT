@@ -24,7 +24,26 @@ public class PageList {
 		this.currentPage = currentPage;
 		this.rowsPerPage = rowsPerPage;
 		setCurrentCount();
-		setMaxRowCount(tableName,keyword);
+		
+		int temp = 0;
+		try{
+			temp = Integer.valueOf(keyword);
+		}catch(Exception e){
+			temp = Integer.MIN_VALUE;
+		}
+		if (temp == Integer.MIN_VALUE){
+			if (!keyword.substring(0, 4).equals("star")){
+				setMaxRowCount1(tableName,keyword);
+			}
+			else{
+				setMaxRowCount(tableName,keyword);
+			}
+		}
+		else{
+			setMaxRowCount2(tableName,keyword);
+		}
+		
+
 		setMaxPage();
 	}
 
@@ -71,14 +90,61 @@ public class PageList {
 	public void setMaxRowCount(String tableName, String keyword) {
 		String findAllSql = "select count(*) as count from " + tableName +" where TITLE like \'%"+ keyword + "%\'";
 		
-		System.out.println("PageList71--" + findAllSql);
+		System.out.println("PageList93--" + findAllSql);
 		
 		try {
 			pstmt = con.prepareStatement(findAllSql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				maxRowCount = rs.getInt("count");
-				System.out.println("PageList78--" + maxRowCount);
+				System.out.println("PageList100--" + maxRowCount);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			dbcon.closeDB(con);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void setMaxRowCount1(String tableName, String keyword) {
+		keyword = String.valueOf(keyword.charAt(keyword.length()-1));
+		String findAllSql = "select count(*) as count from " + tableName +" where Rate>="+ keyword;
+		
+		System.out.println("PageList117--" + findAllSql);
+		
+		try {
+			pstmt = con.prepareStatement(findAllSql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				maxRowCount = rs.getInt("count");
+				System.out.println("PageList124--" + maxRowCount);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			dbcon.closeDB(con);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void setMaxRowCount2(String tableName, String keyword) {
+		String findAllSql = "select count(*) as count from " + tableName +" where CATEGORY="+ keyword;
+		
+		System.out.println("PageList140--" + findAllSql);
+		
+		try {
+			pstmt = con.prepareStatement(findAllSql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				maxRowCount = rs.getInt("count");
+				System.out.println("PageList147--" + maxRowCount);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -13,7 +13,7 @@ import dao.UserDao;
 import bean.CartInfo;
 import bean.UserInfo;
 
-public class CategoryS extends HttpServlet {
+public class StarS extends HttpServlet {
 
 	public void init() throws ServletException {
 		super.init();
@@ -21,13 +21,7 @@ public class CategoryS extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String cate = (String) request.getParameter("catename");
-		//change to cateid
-		ProductDao pd = new ProductDao();
-		String keyword = String.valueOf(pd.findCateId(cate));
-		
-		System.out.print("CS" + keyword);
-		
+		String keyword = (String) request.getParameter("star");
 		RequestDispatcher rd;
 		request.getSession().setAttribute("keyword", keyword);
 		rd = request.getRequestDispatcher("ProductS?flag=0&&keyword=" + keyword);

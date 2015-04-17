@@ -44,19 +44,19 @@
                
               
                 <li>
-                    <a href="#">Star 1</a>
+                    <a href="StarS?star=<%="star1"%>">Star 1</a>
                             </li>
                 <li>
-                    <a href="#">Star 2</a>
+                    <a href="StarS?star=<%="star2"%>">Star 2</a>
                             </li>
                 <li>
-                    <a href="#">Star 3</a>
+                    <a href="StarS?star=<%="star3"%>">Star 3</a>
                             </li>    
                 <li>
-                    <a href="#">Star 4</a>
+                    <a href="StarS?star=<%="star4"%>">Star 4</a>
                             </li>
                 <li>
-                    <a href="#">Star 5</a>
+                    <a href="StarS?star=<%="star5"%>">Star 5</a>
                             </li>
               </ul>
     </div>
@@ -84,29 +84,29 @@
 <h2>Category</h2>                                                        	
 <div class="column20p">
 <ul>                                                                                                             
-<li><a href="CategoryS?catename=<%="fabric"%>">C1</a></li>                          	                                                                                                        
-<li><a href="CategoryS?catename=<%="fabric"%>">C2</a></li>
-<li><a href="CategoryS?catename=<%="fabric"%>">C3</a></li>                                                                                                   
-<li><a href="CategoryS?catename=<%="fabric"%>">C4</a></li>                                                                                                        
-<li><a href="CategoryS?catename=<%="fabric"%>">C5</a></li>                                    	
+<li><a href="CategoryS?catename=<%="Action"%>">Action</a></li>                          	                                                                                                        
+<li><a href="CategoryS?catename=<%="Animation"%>">Animation</a></li>
+<li><a href="CategoryS?catename=<%="Children"%>">Children</a></li>                                                                                                   
+<li><a href="CategoryS?catename=<%="Classics"%>">Classics</a></li>                                                                                                        
+<li><a href="CategoryS?catename=<%="Comedy"%>">Comedy</a></li>                                    	
 </ul>
 </div>
 <div class="column20p">
 <ul>                                                                                                                                            
-<li><a href="CategoryS?catename=<%="fabric"%>">C6</a></li>                                 	
-<li><a href="CategoryS?catename=<%="fabric"%>">C7</a></li>                                                                                                                             
-<li><a href="CategoryS?catename=<%="fabric"%>">C8</a></li>                                   	                                                                                                           
-<li><a href="CategoryS?catename=<%="fabric"%>">C9</a></li>                                                                                                                                              
-<li><a href="CategoryS?catename=<%="fabric"%>">C10</a></li>                               	
+<li><a href="CategoryS?catename=<%="Documentary"%>">Documentary</a></li>                                 	
+<li><a href="CategoryS?catename=<%="Drama"%>">Drama</a></li>                                                                                                                             
+<li><a href="CategoryS?catename=<%="Family"%>">Family</a></li>                                   	                                                                                                           
+<li><a href="CategoryS?catename=<%="Horror"%>">Horror</a></li>                                                                                                                                              
+<li><a href="CategoryS?catename=<%="Games"%>">Games</a></li>                               	
 </ul>
  </div>
 <div class="column20p">
 <ul>                                                                                                                                            
-<li><a href="CategoryS?catename=<%="fabric"%>">C11</a></li>                                                                                                       
-<li><a href="CategoryS?catename=<%="fabric"%>">C12</a></li>                                                                                                      
-<li><a href="CategoryS?catename=<%="fabric"%>">C13</a></li>     
-<li><a href="CategoryS?catename=<%="fabric"%>">C14</a></li>    
-<li><a href="CategoryS?catename=<%="fabric"%>">C15</a></li>                               	
+<li><a href="CategoryS?catename=<%="Foreign"%>">Foreign</a></li>                                                                                                       
+<li><a href="CategoryS?catename=<%="Music"%>">Music</a></li>                                                                                                      
+<li><a href="CategoryS?catename=<%="Sci-Fi"%>">Sci-Fi</a></li>     
+<li><a href="CategoryS?catename=<%="Sports"%>">Sports</a></li>    
+<li><a href="CategoryS?catename=<%="Travel"%>">Travel</a></li>                               	
 </ul>
 </div>
 

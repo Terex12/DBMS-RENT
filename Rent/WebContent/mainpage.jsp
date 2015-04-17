@@ -46,7 +46,7 @@
  
 <div id="column-right">
     <div class="box">
-  <div class="box-heading_left">Account</div>
+  <div class="box-heading_left">Quick Links</div>
   <div class="box-content" style="background:none;border: solid 1px #E3E3E2;"><div class="box-category">
     <ul>
         <li><a href="OrderS?flag=1">My Account</a></li>
