@@ -3171,10 +3171,9 @@ div#slide_right_arrow{
     width: 131px;
     float:right;
     z-index: 19;
-    margin-right:-100px;
-
-   
+    margin-right:-100px;   
 }
+
 input[type="text"], input[type="password"], textarea{
 	padding:8px;
    	background-color: #eee;
