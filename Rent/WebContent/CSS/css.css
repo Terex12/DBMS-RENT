@@ -1,4 +1,4 @@
-fsehtml { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, 
 ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, 
 tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, .footer, header, hgroup, menu, nav, section, summary, 
@@ -950,8 +950,7 @@ Author URI: http://dev7studios.com
 	width: 180px;
 	color:#333;
 	position:relative;
-	left:25%;
-	
+	left:24%;
 }
 
 
@@ -963,7 +962,7 @@ Author URI: http://dev7studios.com
         height: 30px;
 	cursor: pointer;
 	width: 36px;
-        margin-left:900px;
+        margin-left:80em;
 		margin-top:10px;        
 }
 
@@ -974,7 +973,7 @@ Author URI: http://dev7studios.com
     padding: 0 4px;
     border-radius: 3px;
     padding: 9px;
-    width: 900px;
+    width: 80em;
     color:#999;
     padding-left:15px;
     background-color: #fff;
@@ -992,7 +991,6 @@ Author URI: http://dev7studios.com
 	left:40px;
 	width: 180px;
 	color:#333;
-
 	position:relative;
 }
 
