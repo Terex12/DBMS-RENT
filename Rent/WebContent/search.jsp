@@ -69,7 +69,7 @@
 <!-- search bar !!!!!!!!!!!!-->
 <div id="search">
 <form action="SearchS" method="post">
-<div class="button-search"></div>
+<div class="button-search2"></div>
 <input type="text" name="search" value="Search" />
 <br>
 <br>
