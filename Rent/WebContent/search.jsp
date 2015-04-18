@@ -5,10 +5,23 @@
 <title>iCart HTML Version</title>
 </head>
 <body>
+<%
+if(session.getAttribute("userinfo")==null)
+{%>
+<h1>You are not login, Please Login first</h1>
+It will redirect in 3 seconds
+<p>
+if not auto redirect,please click<a href="login.jsp">here</a></p>
+<%
+response.setHeader("refresh","3;URL=login.jsp");
+return;
+}
+%>
 <div class="menu">
 <ul>
 <li style="width:0px;"><a></a></li>
 <li><a href="#" class="home">Home</a></li>
+<li><a href="OrderS?flag=1" class="account">My Account</a></li>
 <!--<li style="float:right;"><a class="register">Register</a></li>-->
 </ul>
 </div>

@@ -4,7 +4,8 @@
 <html lang="en" dir="ltr">
 <head>
 <%
-	LinkedList<OrderInfo> order = (LinkedList<OrderInfo>) request.getSession().getAttribute("order");
+	OrderInfo item = (OrderInfo) request.getAttribute("singleProduct");
+	session.setAttribute("singleProduct", item);
 %>
 <link rel="stylesheet" type="text/css" href="./CSS/css.css" />
 <title>GatorRental HTML Version</title>
@@ -27,6 +28,7 @@
 <br>
 <br>
 <div>
+<form action="OrderS?flag=3" method="post">
 <table width="600" border="1" cellpadding="1" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#CCCCCC">
 				<tr>
 					<td height="25">
@@ -39,24 +41,27 @@
 						<div align="center">Rate					</div></td>
 					
 				</tr>
-				<%
-						for (OrderInfo oi : order) {
-					%>
+				
 					<tr>
 						<td height="25" bgcolor="#FFFFFF">
-							<%=oi.getProid()%>					  </td>
+							<%=item.getProid()%>					  </td>
 						<td bgcolor="#FFFFFF">
-							<%=oi.getPrice()%>					  </td>
+							<%=item.getPrice()%>					  </td>
 						<td bgcolor="#FFFFFF">
-							<%=oi.getQuantity()%>" 				  </td>
-						<td> <a href="RateS?proid=<%=oi.getProid()%>"> Click to Rate</a></td>
-					<%
-						}
-					%>
+							<%=item.getQuantity()%>" 				  </td>
+						<td> 
+						<input type="radio" name="rate" value="1" /> 1
+						<input type="radio" name="rate" value="2" /> 2
+						<input type="radio" name="rate" value="3" /> 3
+						<input type="radio" name="rate" value="4" /> 4
+						<input type="radio" name="rate" value="5" /> 5
+						</td>
+					
 						
 					</tr>
-</table>	
-
+</table>
+ <input type="submit" value="rate" />		
+</form>	
 </div>
 <br>
 <br>

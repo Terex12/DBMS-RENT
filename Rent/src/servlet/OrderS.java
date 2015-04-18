@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.OrderDao;
 import dao.ProductDao;
@@ -121,7 +122,9 @@ public class OrderS extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("order", order);
+		HttpSession session = request.getSession();
+		session.setAttribute("order", order);
+		//request.setAttribute("order", order);
 		RequestDispatcher rd = request.getRequestDispatcher("/orderrate.jsp");
 		rd.forward(request, response);
 	}
@@ -131,18 +134,24 @@ public class OrderS extends HttpServlet {
 	
 	//=============Maybe have bug======================
 	private void insertRate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LinkedList<OrderInfo> order = (LinkedList<OrderInfo>) request.getAttribute("order");
-		int rate = (int) request.getAttribute("rate");
+		
+		OrderInfo item =  (OrderInfo) request.getSession().getAttribute("singleProduct");
+		System.out.println("OrderS139--" + item.getProid());
+		
+		int rate = Integer.parseInt(request.getParameter("rate"));
+		
+		System.out.println("OrderS141--" + rate);
+		
 		RateDao rdo = new RateDao();
-		for (OrderInfo oi : order){
+		
 			try {
-				rdo.insertRate(oi, rate);
+				rdo.insertRate(item, rate);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-	
-		RequestDispatcher rd = request.getRequestDispatcher("/account.jsp");
+
+			request.setAttribute("singleProduct",null);
+		RequestDispatcher rd = request.getRequestDispatcher("/search.jsp");
 		rd.forward(request, response);
 	}
 

@@ -81,9 +81,9 @@
 <div id="content">
       <div class="login-content">
     <div class="left">
-      <h2>New Customer</h2>
+      <h2>User Information</h2>
       <div class="content">
-				<table border="1" cellpadding="1" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#CCCCCC">
+				<table>
 					<tr>
 						<td height="25">
 							User Name						
@@ -111,11 +111,9 @@
 			  </table>
     </div>
     <div class="right">
-      <h2>Returning Customer</h2>
+      <h2>Order History</h2>
       		<form action="OrderS?flag=1" method="post">
-			
-			<div align="center">
-				<table border="1" cellpadding="1" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#CCCCCC">
+				<table>
 					<tr>
 						<td height="25">
 							Order						
@@ -132,9 +130,6 @@
 				%>
 					
 			  </table>
-			</div>
-			
-			
 		</form>
     </div>
   </div>

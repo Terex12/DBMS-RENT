@@ -83,4 +83,13 @@
       <url-pattern>/CategoryS</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+      <servlet-name>RateS</servlet-name>
+      <servlet-class>servlet.RateS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>RateS</servlet-name>
+      <url-pattern>/RateS</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
