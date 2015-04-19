@@ -2876,6 +2876,7 @@ form h2{
     	border: 1px solid #BBBBBB;
 	box-shadow: 1px 1px 1px #FFFFFF inset;	
 }
+
 .cart-module .active {
 	background: #F8F8F8 url('images/arrow-down.png') 7px 50% no-repeat;
 }

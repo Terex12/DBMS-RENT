@@ -70,10 +70,9 @@
 <div id="search">
 <form action="SearchS" method="post">
 <div class="button-search2"></div>
-<input type="text" name="search" value="Search" />
+<input type="text" name="filter_name" value="Search" onClick="this.value = '';" onKeyDown="this.style.color = '#888';" />
 <br>
-<br>
-<input type="submit" value= "search" name="submit" />
+<!--<input type="submit" value= "search" name="submit" />-->
 </form>
 </div>
  
