@@ -129,7 +129,11 @@ public class ProductDao{
     
     public LinkedList<ProductInfo> getAllProductByPage2(int start, int rowPerPage, String keyword){  
   	  LinkedList<ProductInfo> list = new LinkedList<ProductInfo>(); 
+  	  
   	  keyword = String.valueOf(keyword.charAt(keyword.length()-1));
+  	  
+  	  System.out.println("ProDuctDao135--" + keyword);
+  	  
   	  String sql = "select * from (select * from (select p.*, rownum r from PRODUCTS p where p.Rate >="+ keyword + ")" + "where r>=" + start + "and r<=" + (start+rowPerPage) + ") pr, INVENTORY i where pr.PROD_ID = i.PROD_ID";
   	  
   	  System.out.println("ProductDao134--"+ sql);

@@ -8,22 +8,18 @@ import util.DataBaseConnector;
 import bean.OrderInfo;
 
 public class RateDao{
-	public boolean insertRate(OrderInfo oi, int rate){
+	public boolean insertRate(OrderInfo oi, int rate) throws Exception{
 		DataBaseConnector dbcon = new DataBaseConnector();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into ";	//modify
 
 		try {
 			con = dbcon.initDB();
-			pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement("{call update_rate(?,?)}");
 		
 			//if sql change,here need to change
-			pstmt.setString(1, );
-			pstmt.setString(2, );
-			pstmt.setString(3, );
-			pstmt.setString(4, );
-			pstmt.setString(5, );
+			pstmt.setInt(1, oi.getProid());
+			pstmt.setInt(2, rate);
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {

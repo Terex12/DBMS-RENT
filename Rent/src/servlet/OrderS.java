@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.OrderDao;
 import dao.ProductDao;
@@ -42,9 +43,17 @@ public class OrderS extends HttpServlet {
 		String username = u.getUserName();
 		int userid = u.getUserId();
 		LinkedList<CartInfo> cart = (LinkedList<CartInfo>) request.getSession().getAttribute("Shoppingcart");
-		
+		float totalsum = 0;
 		OrderDao od = new OrderDao();
 		ProductDao pd = new ProductDao();
+		
+		int orderid = 0;
+		try {
+			orderid = od.insertOrder(u.getUserName());
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		for (CartInfo c : cart) {
 			OrderInfo oi = new OrderInfo();
@@ -55,14 +64,22 @@ public class OrderS extends HttpServlet {
 			oi.setQuantity(c.getQuantity());
 			
 			float sum = c.getPrice()*c.getQuantity();
+			totalsum = totalsum + sum;
 			oi.setSum(sum);
 			try {
 				pd.changeStock(c.getProductName(), c.getId(), c.getQuantity());
-				od.insertOrder(oi);
+				od.insertOrderLine(orderid, oi);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		
+		try {
+			od.updateOrder(orderid, totalsum);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		//after make the order, clear the shopping cart.
@@ -77,10 +94,12 @@ public class OrderS extends HttpServlet {
 	private void viewOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		UserInfo u = (UserInfo)request.getSession().getAttribute("userinfo");
-		String uname = u.getUserName();
+		int userid = u.getUserId();
 		OrderDao od = new OrderDao();
 		try {
-			LinkedList<Integer> oidlist = od.queryOrderid(uname);
+			//problem
+			LinkedList<Integer> oidlist = od.queryOrderid(userid);
+			
 			if (oidlist.size() > 0){
 				request.setAttribute("orderinfo", oidlist);
 			}
@@ -103,7 +122,9 @@ public class OrderS extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("order", order);
+		HttpSession session = request.getSession();
+		session.setAttribute("order", order);
+		//request.setAttribute("order", order);
 		RequestDispatcher rd = request.getRequestDispatcher("/orderrate.jsp");
 		rd.forward(request, response);
 	}
@@ -113,14 +134,24 @@ public class OrderS extends HttpServlet {
 	
 	//=============Maybe have bug======================
 	private void insertRate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LinkedList<OrderInfo> order = (LinkedList<OrderInfo>) request.getAttribute("order");
-		int rate = (int) request.getAttribute("rate");
+		
+		OrderInfo item =  (OrderInfo) request.getSession().getAttribute("singleProduct");
+		System.out.println("OrderS139--" + item.getProid());
+		
+		int rate = Integer.parseInt(request.getParameter("rate"));
+		
+		System.out.println("OrderS141--" + rate);
+		
 		RateDao rdo = new RateDao();
-		for (OrderInfo oi : order){
-			rdo.insertRate(oi, rate);
-		}
-	
-		RequestDispatcher rd = request.getRequestDispatcher("/account.jsp");
+		
+			try {
+				rdo.insertRate(item, rate);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			request.setAttribute("singleProduct",null);
+		RequestDispatcher rd = request.getRequestDispatcher("/search.jsp");
 		rd.forward(request, response);
 	}
 

@@ -1,36 +1,33 @@
 package dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.LinkedList;
 import java.util.Random;
 
 import bean.OrderInfo;
 import util.DataBaseConnector;
 
+
 public class OrderDao{
 	
-	//register insert
-	public boolean insertOrder(OrderInfo oi) throws Exception {
+	//insert order line
+	public boolean insertOrderLine(int orderid, OrderInfo oi) throws Exception {
 		DataBaseConnector dbcon = new DataBaseConnector();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into ORDERS (orderid,username,userid,proname,quantity,price) values(?,?,?,?,?,?)";	//modify
 
 		try {
 			con = dbcon.initDB();
-			pstmt = con.prepareStatement(sql);
-			Random random = new Random();
-			//if sql change,here need to change
-			pstmt.setInt(1, random.nextInt());
-			pstmt.setString(2, oi.getUsename());
-			pstmt.setInt(3, oi.getUseid());
-			pstmt.setString(4, oi.getProname());
-			pstmt.setInt(5, oi.getQuantity());
-			pstmt.setFloat(6, oi.getSum());
-			
+			pstmt = con.prepareStatement("{call INSERT_ORDERLINE(?,?,?)}");
+			pstmt.setInt(1, orderid);	//username
+			pstmt.setInt(2, oi.getProid());
+			pstmt.setInt(3, oi.getQuantity());
+		
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -40,24 +37,78 @@ public class OrderDao{
 		return true;
 	}
 	
-	public LinkedList<Integer> queryOrderid(String uname) throws Exception {
+	
+	//insert order
+	public int insertOrder(String username) throws Exception {
+		DataBaseConnector dbcon = new DataBaseConnector();
+		Connection con = null;
+		int orderid = 0;
+		try {
+			con = dbcon.initDB();
+			//inser order
+			CallableStatement cstmt = con.prepareCall("{call INSERT_ORDER(?,?)}");
+			cstmt.setString(1, username);
+			cstmt.registerOutParameter(2, Types.INTEGER);
+			cstmt.execute();	
+		    orderid = cstmt.getInt(2);
+		    
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		dbcon.closeDB(con);
+		return orderid;
+	}
+	
+	
+	public boolean updateOrder(int orderid, float sum) throws Exception {
+		DataBaseConnector dbcon = new DataBaseConnector();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "update ORDERS set NETAMOUNT = ? where ORDERID = ?";
+
+		try {
+			con = dbcon.initDB();
+			//inser order
+			pstmt = con.prepareStatement(sql);
+			Random random = new Random();
+			//if sql change,here need to change
+			pstmt.setInt(1, orderid);	//username
+			pstmt.setFloat(2, sum);
+	
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} 
+		dbcon.closeDB(con);
+		return true;
+	}
+	
+	
+	
+	
+	
+	
+	public LinkedList<Integer> queryOrderid(int userid) throws Exception {
 		DataBaseConnector dbcon = new DataBaseConnector();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		LinkedList<Integer> oidlist = new LinkedList<Integer>();
-		String sql = "select distinct orderid from orderinfo where username=?";	//modify
+		String sql = "select * from ORDERS where CUSTOMERID=?";	//modify
 
+		System.out.println("OrderDao102--" + sql);
+		
 		try {
 			con = dbcon.initDB();
 			pstmt = con.prepareStatement(sql);
 		
 			//if sql change,here need to change
-			pstmt.setString(1, uname);
+			pstmt.setInt(1, userid);
 			rs = pstmt.executeQuery();
 		
 			while (rs.next()) {
-				oidlist.add(rs.getInt("orderid"));
+				oidlist.add(rs.getInt("ORDERID"));
 			}
 			
 		} catch (SQLException e) {
@@ -67,13 +118,22 @@ public class OrderDao{
 		return oidlist;
 	}
 	
+	
+	
+	
+	
+	
+	
+	//------------------------------------------------------------------------
 	public LinkedList<OrderInfo> queryOrder(int oid) throws Exception{
 		DataBaseConnector dbcon = new DataBaseConnector();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		LinkedList<OrderInfo> orderlist = new LinkedList<OrderInfo>();
-		String sql = "select * from orderinfo where orderid=?";	//modify
+		String sql = "select * from ORDERLINES where ORDERID=?";	//modify
+		
+		System.out.println("OrderDao131--" + sql);
 
 		try {
 			con = dbcon.initDB();
@@ -84,9 +144,8 @@ public class OrderDao{
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				OrderInfo oinfo = new OrderInfo();
-				oinfo.setProname(rs.getString("proname"));
-				oinfo.setPrice(rs.getFloat("price"));
-				oinfo.setQuantity(rs.getInt("quantity"));
+				oinfo.setProid(Integer.parseInt(rs.getString("PROD_ID")));
+				oinfo.setQuantity(rs.getInt("QUANTITY"));
 				orderlist.add(oinfo);
 			}
 			
