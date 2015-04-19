@@ -80,7 +80,8 @@ return;
 
 
 <!-- search bar !!!!!!!!!!!!-->
-<div id="search">
+<div id="content">
+<div id="search2">
 <form action="SearchS" method="post">
 <div class="button-search2"></div>
 <input type="text" name="filter_name" value="Search" onClick="this.value = '';" onKeyDown="this.style.color = '#888';" />
@@ -88,37 +89,46 @@ return;
 <!--<input type="submit" value= "search" name="submit" />-->
 </form>
 </div>
- 
-<div id="content">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <div class="category-info">      
 <div class="column">
 <div class="category-list block">
 <h2>Category</h2>                                                        	
 <div class="column20p">
 <ul>                                                                                                             
-<li><a href="CategoryS?catename=<%="Action"%>">Action</a></li>                          	                                                                                                        
-<li><a href="CategoryS?catename=<%="Animation"%>">Animation</a></li>
-<li><a href="CategoryS?catename=<%="Children"%>">Children</a></li>                                                                                                   
-<li><a href="CategoryS?catename=<%="Classics"%>">Classics</a></li>                                                                                                        
-<li><a href="CategoryS?catename=<%="Comedy"%>">Comedy</a></li>                                    	
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Action"%>">Action</a></li>                          	                                                                                                        
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Animation"%>">Animation</a></li>
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Children"%>">Children</a></li>                                                                                                   
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Classics"%>">Classics</a></li>                                                                                                        
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Comedy"%>">Comedy</a></li>                                    	
 </ul>
 </div>
 <div class="column20p">
 <ul>                                                                                                                                            
-<li><a href="CategoryS?catename=<%="Documentary"%>">Documentary</a></li>                                 	
-<li><a href="CategoryS?catename=<%="Drama"%>">Drama</a></li>                                                                                                                             
-<li><a href="CategoryS?catename=<%="Family"%>">Family</a></li>                                   	                                                                                                           
-<li><a href="CategoryS?catename=<%="Horror"%>">Horror</a></li>                                                                                                                                              
-<li><a href="CategoryS?catename=<%="Games"%>">Games</a></li>                               	
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Documentary"%>">Documentary</a></li>                                 	
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Drama"%>">Drama</a></li>                                                                                                                             
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Family"%>">Family</a></li>                                   	                                                                                                           
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Horror"%>">Horror</a></li>                                                                                                                                              
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Games"%>">Games</a></li>                               	
 </ul>
  </div>
 <div class="column20p">
 <ul>                                                                                                                                            
-<li><a href="CategoryS?catename=<%="Foreign"%>">Foreign</a></li>                                                                                                       
-<li><a href="CategoryS?catename=<%="Music"%>">Music</a></li>                                                                                                      
-<li><a href="CategoryS?catename=<%="Sci-Fi"%>">Sci-Fi</a></li>     
-<li><a href="CategoryS?catename=<%="Sports"%>">Sports</a></li>    
-<li><a href="CategoryS?catename=<%="Travel"%>">Travel</a></li>                               	
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Foreign"%>">Foreign</a></li>                                                                                                       
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Music"%>">Music</a></li>                                                                                                      
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Sci-Fi"%>">Sci-Fi</a></li>     
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Sports"%>">Sports</a></li>    
+<li style="text-align:center;"><a href="CategoryS?catename=<%="Travel"%>">Travel</a></li>                               	
 </ul>
 </div>
 

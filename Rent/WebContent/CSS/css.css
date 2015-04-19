@@ -1066,7 +1066,7 @@ Author URI: http://dev7studios.com
 }
 .box-category > ul > li a.active {
 	
-	font-size:11px;
+	font-size:12px;
 	
 }
 
@@ -2081,12 +2081,12 @@ form h2{
 .category-info {
 	overflow: auto;
 	margin-bottom: 20px;
-
+	
         background: none repeat scroll 0 0 #F4F4F4;
     	border: 1px solid #BBBBBB;
 	box-shadow: 1px 1px 1px #FFFFFF inset;
 	padding:10px; 
-    	font-size: 12px;
+    	font-size: 20px;
     	line-height: 18px;
     	padding: 12px 15px 11px;
     	text-shadow: 0 0 0 transparent, 0 1px rgba(29, 29, 29, 0.2);
@@ -2107,7 +2107,7 @@ form h2{
 }
 .category-list ul {
 	float: left;
-	width: 18%;
+	width: 240px;
 	margin-left:0px;
 }
 

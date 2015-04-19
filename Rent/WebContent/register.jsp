@@ -76,19 +76,19 @@
 				size="38" maxLength="22" /> 
 				<br /> 
 				<br /> 
-			Name: &nbsp<input type="text" id="realname" value="" name="realname"
+			Name: &nbsp <input type="text" id="realname" value="" name="realname"
 				size="38" maxLength="22" /> 
 				<br /> 
 				<br /> 
-			Address: &nbsp<input type="text" id="address" value="" name="address"
+			Address: &nbsp <input type="text" id="address" value="" name="address"
 				size="38" maxLength="22" /> 
 				<br /> 
 				<br /> 
-			Password: &nbsp<input type="password" id="password" value="" name="password"
+			Password: &nbsp <input type="password" id="password" value="" name="password"
 				size="38" maxLength="22"  /> 
 				<br /> 
 				<br /> 
-			Confirm Password: &nbsp<input type="password" id="passwordConfirm" value="" name="passwordConfirm"
+			Confirm Password: &nbsp <input type="password" id="passwordConfirm" value="" name="passwordConfirm"
 				size="38" maxLength="22" /> 
 				<br /> 
 				<br /> 

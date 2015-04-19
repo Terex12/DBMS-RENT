@@ -64,7 +64,7 @@
   
 <div id="content">  
     <div class="wishlist-product">
-		<table>
+		<table style="min-height:350px; height:350px; width:100%">
 				<tr>
 					<td class="image">Image</td>
 				    <td class="name">Product Name</td>

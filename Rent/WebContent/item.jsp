@@ -18,7 +18,6 @@
 <li><a href="search.jsp" class="home">Home</a></li>
 <li><a href="account.html" class="account">My Account</a></li>
 <li><a href="cat.html" class="cart">Shopping Cart</a></li>
-<li><a href="cart.html" class="checkout">Checkout</a></li>
 <li style="float:right;"><a href="login.html" class="login">Login/Register</a></li>
 <!--<li style="float:right;"><a class="register">Register</a></li>-->
 </ul>
@@ -37,44 +36,116 @@
 <div style="width:1000px;margin: 0 auto;margin-top:10px;">
 <div class="linktree">
         <a href="#">Home</a>
-         &raquo; <a href="#">iMac</a>
+         &raquo; <a href="#">Item Details</a>
     </div>
 
-  <h1 style="margin-top:-10px;">iMac</h1>
+  <h1 style="margin-top:-10px;"><%=pd.getProName()%></h1>
 </div>
+
 <div id="container_bg">
+<style type="text/css">
+
+.linktree {
+	margin-top:0px;
+	margin-bottom:10px;
+	margin-left:3px;
+}
+
+.linktree a {
+	color:#666;
+	text-decoration:none;
+	font-size:11px;
+}
+
+#menu {
+	border-radius:5px;
+}
+</style>
+
+
+
+<!--<div id="column-left">
+<div class="box">
+  <div class="box-heading_left">Categories</div>
+  <div class="box-content" style="background:none;border:none;">
+    <div class="box-category">
+<ul>
+<li><a href="#">VCD</a></li>
+<li><a href="#">Laptops &amp; Notebooks (5)</a></li>
+<li><a href="#">Components (2)</a></li>
+<li><a href="#">Software (0)</a></li>
+<li><a href="#">Phones &amp; PDAs (3)</a></li>
+<li><a href="#">Cameras (2)</a></li>
+<li><a href="#">MP3 Players (4)</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>-->
+ 
 <div id="content">
-		<form action="CartS?flag=0&proid=<%=pd.getProId()%>" method="post">
+<div class="block-white"> 
+<div class="block-content">
+           
+</div>
+<div class="separator"></div>
+<div class="block-content">
+<div class="product-info">
+                                	
+<div class="left">                		                			
+<div class="image">
+<a href="#" title="item" >
+<form action="CartS?flag=0&proid=<%=pd.getProId()%>" method="post">
 		  <div>
 			  <table>
 			    <tr>
 			      <td >
 			        <img src="PIC/<%=pd.getPic()%>" />			        </td>
-				    <td>
-					    Product Name
-					    <%=pd.getProName()%>			        </td>
-			    </tr>
-			    <tr>
-			      <td>
-			        Price
-			        <%=pd.getPrice()%>			        </td>
-			    </tr>
-			    <tr>
-			      <td>
-			       Stock
-			        <%=pd.getStock()%>			        </td>
-			    </tr>
-			    <tr>
-			      <td align="right">
-			        <input type="submit" value="Add to Cart" />			       
-					 <input type="button" value="back" onClick="javascript:history.go(-1)"/>			        
 					</td>
 			    </tr>
 			    
             </table>
 		  </div>
-		</form>
+		</form></a>
+</div>               		                        
 </div>
+
+  
+<div id="tab-information" class="tab-content">
+<div id="information"></div>
+			
+	
+<div class="description">
+<span>&raquo;&nbsp;Product Code:</span> Product 14<br />
+<span>&raquo;&nbsp;Reward Points:</span> 0<br />
+<span>&raquo;&nbsp;Stock:</span> <%=pd.getStock()%>                        
+</div>
+                            
+<div class="price">
+<span class="price-new"><%=pd.getPrice()%></span>
+<!--<div class="price-tax">Ex Tax: $100.00</div>-->
+</div>
+<br>
+<div class="cart">
+<div><!--Qty:<input class="quantity" type="text" name="quantity" size="2" value="1" />
+<input type="hidden" name="product_id"  value="41" />
+&nbsp;--><a id="button-cart" class="button">
+<span>			        
+	<input type="submit" value="Add to Cart" />
+<!--    <input type="button" value="back" onClick="javascript:history.go(-1)"/>-->
+</span></a>
+</div>
+</div>
+<div class="review">
+<div>
+<img src="images/stars.png" alt="0 reviews" />&nbsp;&nbsp;
+<a onclick="$('a[href=\'#tab-review\']').trigger('click');#tab-review\']').trigger('click');">0 reviews</a>
+<!--&nbsp;&nbsp;|&nbsp;&nbsp;
+<a onclick="$('a[href=\'#tab-review\']').trigger('click');#tab-review\']').trigger('click');">Write a review</a>-->
+</div>
+</div>
+<div>
+Just when you thought iMac had everything, now there is even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife 2008, and it is more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.</div>
 </div>
 
 <br>
