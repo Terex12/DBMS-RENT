@@ -14,9 +14,7 @@
 <div class="menu">
 <ul>
 <li style="width:0px;"><a></a></li>
-<li class="active"><a href="index.html" class="home">Home</a></li>
-<li style="float:right;"><a href="login.jsp" class="login">Login</a></li>
-<!--<li style="float:right;"><a class="register">Register</a></li>-->
+<li class="active"><a href="welcom.html" class="home">Home</a></li>
 </ul>
 </div>
 
@@ -27,44 +25,46 @@
 <br>
 <br>
 <br>
-<div>
+
+<div id="content">  
 <form action="OrderS?flag=0" method="post">
-<table width="600" border="1" cellpadding="1" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#CCCCCC">
-				<tr>
-					<td height="25">
-						<div align="center">Product Name			</div></td>
+    <div class="wishlist-product"  align="center">
+		<table style="min-height:150px; height:150px; width:80%">
+		<tr>
 					<td>
-						<div align="center">Price					</div></td>
+						Product Name</td>
 					<td>
-						<div align="center">Amount					</div></td>
+						Price</td>
 					<td>
-						<div align="center">Sum					</div></td>
+						Amount</td>
+					<td>
+						Sum</td>
 					
 				</tr>
 				<%
 						for (CartInfo c : cart) {
 					%>
 					<tr>
-						<td height="25" bgcolor="#FFFFFF">
+						<td >
 							<%=c.getProductName()%>					  </td>
-						<td bgcolor="#FFFFFF">
+						<td>
 							<%=c.getPrice()%>					  </td>
-						<td bgcolor="#FFFFFF">
+						<td >
 							<%=c.getQuantity()%>" 				  </td>
-						<td bgcolor="#FFFFFF">
+						<td>
 							<%=c.getQuantity() * c.getPrice()%>					  </td>
 					</tr>
 					<%
 						}
 					%>
-</table>
-
-<!-- add the final sum -->
-
- <input type="submit" value="Make the Order" />		
-</form>	
-
+		</table>
+	</div>
+	<input type="submit" value="Make the Order" />		
+</form>
 </div>
+
+
+
 <br>
 <br>
 <br>

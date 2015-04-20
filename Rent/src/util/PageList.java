@@ -25,6 +25,7 @@ public class PageList {
 		this.rowsPerPage = rowsPerPage;
 		setCurrentCount();
 		
+		System.out.println("PageList28-- keyword" + keyword);
 		int temp = 0;
 		try{
 			temp = Integer.valueOf(keyword);
@@ -33,10 +34,10 @@ public class PageList {
 		}
 		if (temp == Integer.MIN_VALUE){
 			if (!keyword.substring(0, 4).equals("star")){
-				setMaxRowCount1(tableName,keyword);
+				setMaxRowCount(tableName,keyword);
 			}
 			else{
-				setMaxRowCount(tableName,keyword);
+				setMaxRowCount1(tableName,keyword);
 			}
 		}
 		else{

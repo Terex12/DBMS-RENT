@@ -5,13 +5,14 @@
 <title>iCart HTML Version</title>
 </head>
 <body>
+
 <%
 if(session.getAttribute("userinfo")==null)
 {%>
 <h1>You are not login, Please Login first</h1>
-It will redirect in 3 seconds
-<p>
-if not auto redirect,please click<a href="login.jsp">here</a></p>
+<h3>It will redirect in 3 seconds</h3>
+<h3>
+if not auto redirect,please click<a href="login.jsp"> here </a></h3>
 <%
 response.setHeader("refresh","3;URL=login.jsp");
 return;
@@ -82,11 +83,10 @@ return;
 <!-- search bar !!!!!!!!!!!!-->
 <div id="content">
 <div id="search2">
-<form action="SearchS" method="post">
+<form action="SearchS" method="post" >
 <div class="button-search2"></div>
-<input type="text" name="filter_name" value="Search" onClick="this.value = '';" onKeyDown="this.style.color = '#888';" />
+<input type="text" name="search" value="Search" onClick="this.value = '';" onKeyDown="this.style.color = '#888';" />
 <br>
-<!--<input type="submit" value= "search" name="submit" />-->
 </form>
 </div>
 <br>

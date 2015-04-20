@@ -27,28 +27,28 @@
 <br>
 <br>
 <br>
-<div>
+<div id="content">  
 <form action="OrderS?flag=3" method="post">
-<table width="600" border="1" cellpadding="1" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#CCCCCC">
-				<tr>
-					<td height="25">
-						<div align="center">Product Name			</div></td>
+  <div class="wishlist-product" align="center">
+		<table style="min-height:150px; height:150px; width:80%">
+		<tr>
 					<td>
-						<div align="center">Price					</div></td>
+						Product Name</td>
 					<td>
-						<div align="center">Amount					</div></td>
+						Price</td>
 					<td>
-						<div align="center">Rate					</div></td>
+						Amount</td>
+					<td>
+						Rate</td>
 					
 				</tr>
-				
-					<tr>
-						<td height="25" bgcolor="#FFFFFF">
+				<tr>
+						<td>
 							<%=item.getProid()%>					  </td>
-						<td bgcolor="#FFFFFF">
+						<td>
 							<%=item.getPrice()%>					  </td>
-						<td bgcolor="#FFFFFF">
-							<%=item.getQuantity()%>" 				  </td>
+						<td>
+							<%=item.getQuantity()%> 				  </td>
 						<td> 
 						<input type="radio" name="rate" value="1" /> 1
 						<input type="radio" name="rate" value="2" /> 2
@@ -59,8 +59,10 @@
 					
 						
 					</tr>
-</table>
- <input type="submit" value="rate" />		
+		</table>
+		 <input type="submit" value="rate" />	
+		</div>
+	
 </form>	
 </div>
 <br>

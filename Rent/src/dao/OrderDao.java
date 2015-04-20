@@ -131,7 +131,7 @@ public class OrderDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		LinkedList<OrderInfo> orderlist = new LinkedList<OrderInfo>();
-		String sql = "select * from ORDERLINES where ORDERID=?";	//modify
+		String sql = "select * from ORDERLINES o, PRODUCTS p where ORDERID=? and o.PROD_ID = p.PROD_ID";	//modify
 		
 		System.out.println("OrderDao131--" + sql);
 
@@ -139,13 +139,15 @@ public class OrderDao{
 			con = dbcon.initDB();
 			pstmt = con.prepareStatement(sql);
 		
-			//if sql change,here need to change
 			pstmt.setInt(1, oid);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				OrderInfo oinfo = new OrderInfo();
-				oinfo.setProid(Integer.parseInt(rs.getString("PROD_ID")));
+				oinfo.setProid(rs.getInt("PROD_ID"));
+				oinfo.setPrice(rs.getFloat("PRICE"));
+				oinfo.setProname(rs.getString("TITLE"));
 				oinfo.setQuantity(rs.getInt("QUANTITY"));
+				
 				orderlist.add(oinfo);
 			}
 			

@@ -40,8 +40,6 @@
 <ul>
 <li style="width:0px;"><a></a></li>
 <li><a href="welcom.html" class="home">Home</a></li>
-<li><a href="account.jsp" class="account">My Account</a></li>
-<li><a href="shoppingcart.jsp" class="cart">Shopping Cart</a></li>
 <li class="active" style="float:right;"><a href="login.jsp" class="login">Login/Register</a></li>
 <!--<li style="float:right;"><a class="register">Register</a></li>-->
 </ul>
@@ -78,10 +76,8 @@
   <div class="box-content" style="background:none;border: solid 1px #E3E3E2;"><div class="box-category">
     <ul>
       <li><a href="login.jsp">Login</a> / <a href="register.jsp">Register</a></li>
-      <li><a href="#">My Account</a></li>
+      <li><a href="StatisticS">Data Statistic</a></li>
       <li><a href="#">Returns</a></li>
-      <li><a href="#">Transactions</a></li>
-      <li><a href="#">Newsletter</a></li>
           </ul>
   </div>
 </div>
@@ -94,6 +90,7 @@
       <div class="content">
         <p><b>Register Account</b></p>
         <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
+        <br />
         <a href="register.jsp" class="button"><span>Continue</span></a></div>
     </div>
     <div class="right">
@@ -109,7 +106,7 @@
           <input type="password" id="password" value="" name="password" />
           <br />
           <br />
-          <a class = "button"><input type="Submit" name="submit" value="Login" /></a>
+          <input type="Submit"  name="submit" value="Login" />
 		  <input type="Reset" name="reset" style="width: 50px" value="Reset" />
                   </div>
       </form>

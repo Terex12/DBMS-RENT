@@ -82,10 +82,6 @@ public class OrderS extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		//after make the order, clear the shopping cart.
-		//cart = new LinkedList<CartInfo>();
-		//request.getSession().setAttribute("Shoppingcart", cart);
-		
 		RequestDispatcher rd = request.getRequestDispatcher("OrderS?flag=1");
 		rd.forward(request, response);
 		
@@ -124,7 +120,6 @@ public class OrderS extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("order", order);
-		//request.setAttribute("order", order);
 		RequestDispatcher rd = request.getRequestDispatcher("/orderrate.jsp");
 		rd.forward(request, response);
 	}

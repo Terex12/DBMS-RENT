@@ -13,9 +13,7 @@
 <div class="menu">
 <ul>
 <li style="width:0px;"><a></a></li>
-<li class="active"><a href="index.html" class="home">Home</a></li>
-<li style="float:right;"><a href="login.jsp" class="login">Login</a></li>
-<!--<li style="float:right;"><a class="register">Register</a></li>-->
+<li class="active"><a href="welcom.html" class="home">Home</a></li>
 </ul>
 </div>
 
@@ -27,7 +25,7 @@
 <br>
 <br>
  <div>
-    <div align="center">Shopping Cart is cleared!</div>
+    <div align="center">Shopping Cart is Cleared!</div>
   </div>
   <div>
 

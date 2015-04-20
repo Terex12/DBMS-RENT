@@ -33,8 +33,6 @@
 <li><a href="welcom.html" class="home">Home</a></li>
 <li><a href="account.jsp" class="account">My Account</a></li>
 <li><a href="shoppingcart.jsp" class="cart">Shopping Cart</a></li>
-<li class="active" style="float:right;"><a href="login.jsp" class="login">Login/Register</a></li>
-<!--<li style="float:right;"><a class="register">Register</a></li>-->
 </ul>
 </div>
 
@@ -71,66 +69,53 @@
       <li><a href="login.jsp">Login</a> / <a href="register.jsp">Register</a></li>
       <li><a href="#">My Account</a></li>
       <li><a href="#">Returns</a></li>
-      <li><a href="#">Transactions</a></li>
-      <li><a href="#">Newsletter</a></li>
           </ul>
   </div>
 </div>
 </div>
-  </div>
+</div>
+
 <div id="content">
       <div class="login-content">
     <div class="left">
       <h2>User Information</h2>
       <div class="content">
-				<table>
-					<tr>
-						<td height="25">
-							User Name						
-						</td>
-						<td>
-							Real Name
-						</td>
-						<td>
-							Address
-						</td>
-						<td>
-							Email
-						</td>
-					</tr>
-					<tr>
-						<td height="25" bgcolor="#FFFFFF">
-							<%=u.getUserName()%>					</td>
-						<td bgcolor="#FFFFFF">
-							<%=u.getName()%>					  </td>
-						<td bgcolor="#FFFFFF">
-							<%=u.getAddress()%>					  </td>
-						<td bgcolor="#FFFFFF">
-							<%=u.getEmail()%>					  </td>
-					</tr>
-			  </table>
+      <div class="description">
+		<span>&raquo;&nbsp;User Name:</span> <%=u.getUserName()%><br />
+		<span>&raquo;&nbsp;Real Name:</span> <%=u.getName()%> <br /> 
+		<span>&raquo;&nbsp;Address:</span> <%=u.getAddress()%>	  <br />
+		<span>&raquo;&nbsp;E-mail:</span> <%=u.getEmail()%>	  <br />
+		<br />
+		<br />               
+		</div>
+				
+    </div>
     </div>
     <div class="right">
       <h2>Order History</h2>
-      		<form action="OrderS?flag=1" method="post">
-				<table>
-					<tr>
-						<td height="25">
-							Order						
-						</td>
-					</tr>
-					<%
+        <div class="content">
+     	<div class="wishlist-product">
+		<table style="min-height:350px; height:350px; width:100%">
+		<tr>
+			<td>
+				My Order						
+			</td>
+		</tr>
+		<%
 					for (Integer oid : ol) {
 					%>
 				<tr>
-					<td height="25" bgcolor="#FFFFFF"><a href="OrderS?flag=2&oid=<%=oid%>"><%=oid%></a></td>
+				
+					<td ><a href="OrderS?flag=2&oid=<%=oid%>"><%=oid%></a></td>
+				
 				</tr>
 				<%
 					}
 				%>
-					
-			  </table>
-		</form>
+		</table>
+		</div>
+
+		</div>
     </div>
   </div>
   </div>

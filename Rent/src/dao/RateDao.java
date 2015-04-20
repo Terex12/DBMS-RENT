@@ -17,7 +17,8 @@ public class RateDao{
 			con = dbcon.initDB();
 			pstmt = con.prepareStatement("{call update_rate(?,?)}");
 		
-			//if sql change,here need to change
+			System.out.println("RateDao20--" + oi.getProid() + " " + rate);
+			
 			pstmt.setInt(1, oi.getProid());
 			pstmt.setInt(2, rate);
 			

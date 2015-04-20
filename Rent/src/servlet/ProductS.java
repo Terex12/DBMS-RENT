@@ -39,13 +39,11 @@ public class ProductS extends HttpServlet {
 					curPage=1;
 				} else {
 					curPage=Integer.parseInt(request.getParameter("start"));
-				}
-				
-				System.out.println("ProductS44-- current page=" + curPage);
-				
+				}		
 				
 				String keyword = (String) request.getSession().getAttribute("keyword");
 			
+				System.out.println("ProductS44-- " + keyword);
 				
 				int temp = 0;
 				try{

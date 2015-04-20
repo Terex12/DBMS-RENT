@@ -69,14 +69,15 @@
 	%>
 	</span>
 	
+<div id="content">
+  <div class="content" align="center">
 	<form name="registerForm" action="UserRegisterS" method="post" onsubmit="return checkinput()">
-		<div align="center">
 			<h1>User Register</h1>
-			User Name: <input type="text" id="username" value="" name="username"
+			User Name:  <input type="text" id="username" value="" name="username"
 				size="38" maxLength="22" /> 
 				<br /> 
 				<br /> 
-			Name: &nbsp <input type="text" id="realname" value="" name="realname"
+			Name: &nbsp &nbsp <input type="text" id="realname" value="" name="realname"
 				size="38" maxLength="22" /> 
 				<br /> 
 				<br /> 
@@ -88,7 +89,7 @@
 				size="38" maxLength="22"  /> 
 				<br /> 
 				<br /> 
-			Confirm Password: &nbsp <input type="password" id="passwordConfirm" value="" name="passwordConfirm"
+			Confirm: &nbsp <input type="password" id="passwordConfirm" value="" name="passwordConfirm"
 				size="38" maxLength="22" /> 
 				<br /> 
 				<br /> 
@@ -99,8 +100,9 @@
 				<input type="Submit" name="submit" style="width: 210px" value="Register" />
 			 	<input type="Reset" name="reset" style="width: 210px" value="Reset" />
 				<input type="button" name="gotologin" style="width: 210px" value="login" onclick="window.location='login.jsp'"/>
-		</div>
 	</form>
+	</div>
+	</div>
 </div>
 <br>
 <br>
