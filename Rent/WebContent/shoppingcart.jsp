@@ -52,10 +52,9 @@
 <div class="menu">
 <ul>
 <li style="width:0px;"><a></a></li>
-<li><a href="index.html" class="home">Home</a></li>
+<li><a href="welcom.html" class="home">Home</a></li>
 <li><a href="OrderS?flag=1" class="account">My Account</a></li>
 <li><a href="shoppingcart.jsp?keyword=<%=keyword%>" class="cart">Shopping Cart</a></li>
-<li style="float:right;"><a href="login.jsp" class="login">Login</a></li>
 </ul>
 </div>
 

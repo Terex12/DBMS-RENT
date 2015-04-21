@@ -106,6 +106,7 @@
 			    
             </table>
 		  </div>
+		  <input type="submit" value="Add to Cart" />
 		</form></a>
 </div>               		                        
 </div>
@@ -116,36 +117,26 @@
 			
 	
 <div class="description">
-<span>&raquo;&nbsp;Product Code:</span> Product 14<br />
-<span>&raquo;&nbsp;Reward Points:</span> 0<br />
-<span>&raquo;&nbsp;Stock:</span> <%=pd.getStock()%>                        
+<span>&raquo;&nbsp;Product Code:</span> <%=pd.getProId()%><br />
+<span>&raquo;&nbsp;Stock:</span> <%=pd.getStock()%> <br /> 
+<span>&raquo;&nbsp;Sold:</span> <%=pd.getSold()%>  <br />
+<br />
+<br />               
 </div>
                             
 <div class="price">
-<span class="price-new"><%=pd.getPrice()%></span>
-<!--<div class="price-tax">Ex Tax: $100.00</div>-->
+<span class="price-new">Price <%=pd.getPrice()%></span>
 </div>
 <br>
-<div class="cart">
-<div><!--Qty:<input class="quantity" type="text" name="quantity" size="2" value="1" />
-<input type="hidden" name="product_id"  value="41" />
-&nbsp;--><a id="button-cart" class="button">
-<span>			        
-	<input type="submit" value="Add to Cart" />
-<!--    <input type="button" value="back" onClick="javascript:history.go(-1)"/>-->
-</span></a>
-</div>
-</div>
+
 <div class="review">
 <div>
 <img src="images/stars.png" alt="0 reviews" />&nbsp;&nbsp;
-<a onclick="$('a[href=\'#tab-review\']').trigger('click');#tab-review\']').trigger('click');">0 reviews</a>
-<!--&nbsp;&nbsp;|&nbsp;&nbsp;
-<a onclick="$('a[href=\'#tab-review\']').trigger('click');#tab-review\']').trigger('click');">Write a review</a>-->
+<%=pd.getRate()%> 
 </div>
 </div>
 <div>
-Just when you thought iMac had everything, now there is even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife 2008, and it is more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.</div>
+No Comments</div>
 </div>
 
 <br>

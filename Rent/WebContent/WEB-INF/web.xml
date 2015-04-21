@@ -92,4 +92,23 @@
       <url-pattern>/RateS</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+      <servlet-name>StarS</servlet-name>
+      <servlet-class>servlet.StarS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>StarS</servlet-name>
+      <url-pattern>/StarS</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+      <servlet-name>StatisticS</servlet-name>
+      <servlet-class>servlet.StatisticS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>StatisticS</servlet-name>
+      <url-pattern>/StatisticS</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>

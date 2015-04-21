@@ -16,17 +16,17 @@ public class UserDao{
 		DataBaseConnector dbcon = new DataBaseConnector();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into CUSTOMERS (USERNAME,FIRSTNAME,ADDRESS1,PASSWORD,EMAIL) values(?,?,?,?,?)";	//modify(name)
+		//String sql = "insert into CUSTOMERS (USERNAME,FIRSTNAME,ADDRESS1,PASSWORD,EMAIL) values(?,?,?,?,?)";	//modify(name)
 
 		try {
 			con = dbcon.initDB();
-			pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement("{call user_reg(?,?,?,?,?)}");
 		
 			//if sql change,here need to change
 			pstmt.setString(1, user.getUserName());
 			pstmt.setString(2, user.getName());
-			pstmt.setString(3, user.getAddress());
-			pstmt.setString(4, user.getPassword());
+			pstmt.setString(3, user.getPassword());
+			pstmt.setString(4, user.getAddress());
 			pstmt.setString(5, user.getEmail());
 			
 			pstmt.executeUpdate();

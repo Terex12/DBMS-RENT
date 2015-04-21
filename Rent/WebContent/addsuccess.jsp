@@ -9,9 +9,7 @@
 <div class="menu">
 <ul>
 <li style="width:0px;"><a></a></li>
-<li class="active"><a href="index.html" class="home">Home</a></li>
-<li style="float:right;"><a href="login.jsp" class="login">Login</a></li>
-<!--<li style="float:right;"><a class="register">Register</a></li>-->
+<li class="active"><a href="welcom.html" class="home">Home</a></li>
 </ul>
 </div>
 
@@ -23,10 +21,10 @@
 <br>
 <br>
 <div>
-    <div align="center"><a href='javascript:onclick=history.go(-2)'>back to continue shopping</a></div>
+    <div align="center"><a href='javascript:onclick=history.go(-2)'>Back to Continue Shopping</a></div>
 </div>
 <div>
-   	<div align="center"><a href="shoppingcart.jsp">Check Cart</a></div>
+   	<div align="center"><a href="shoppingcart.jsp">Check Shopping Cart</a></div>
 </div>
 <br>
 <br>
