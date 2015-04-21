@@ -29,7 +29,7 @@
 <br>
 <div>
 <form action="OrderS?flag=0" method="post">
-<table width="600" border="1" cellpadding="1" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#CCCCCC">
+<table width="600" border="1" cellpadding="1" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#CCCCCC" style="margin-left:30%;">
 				<tr>
 					<td height="25">
 						<div align="center">Product Name			</div></td>
@@ -61,7 +61,7 @@
 
 <!-- add the final sum -->
 
- <input type="submit" value="Make the Order" />		
+ <input type="submit" value="Make the Order" style="margin-left:30%;" />		
 </form>	
 
 </div>

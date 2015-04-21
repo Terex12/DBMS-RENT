@@ -27,7 +27,7 @@
 <br>
 <br>
 <div>
-<table width="600" border="1" cellpadding="1" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#CCCCCC">
+<table width="600" border="1" cellpadding="1" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#CCCCCC" style="margin-left:30%;">
 				<tr>
 					<td height="25">
 						<div align="center">Product Name			</div></td>
